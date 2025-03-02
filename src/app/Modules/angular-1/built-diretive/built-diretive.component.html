@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Structral Directive</h1>
+    <div class="bd">
+        <h2>*ngIf</h2>
+        <a [href]="age >17 ?  Google : Facebook ">link1 | Link2</a>
+    </div>
+    <div class="bd">
+        <h2>*ngFor</h2>
+        <select class="form-select">
+            <option *ngFor="let num of num">{{num}}</option>
+        </select>
+    </div>
+    <div class="bd" [ngSwitch]="game">
+        <p *ngSwitchCase="1">hocky</p>
+        <p *ngSwitchCase="2">Cricket</p>
+        <p *ngSwitchCase="3">Fooball</p>
+        <p *ngSwitchCase="4">kabbadi</p>
+    </div>
+    <h1>Attribute Directive</h1>
+    <div class="bd">
+        <p [ngClass]="'testClass'">This is ngClass Attribute directive</p>
+    </div>
+    <div class="bd">
+        <p [ngStyle]="t1">This is ngStyle from ts file css</p>
+        <br>
+        <p [ngStyle]="{'color':'green'}">this is ngStyle form html file</p>
+    </div>
+</div>

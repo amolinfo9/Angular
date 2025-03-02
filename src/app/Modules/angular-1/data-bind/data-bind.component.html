@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="db">
+        <h2>String Interpolution</h2>
+        <p>{{name}}</p>
+    </div>
+    <div class="db">
+        <h2>Property Binding</h2>
+        <a [href]="link">Google</a>
+        <img [src]="ImagePath" alt="img loading" width="150px" height="100px">
+    </div>
+    <div class="db">
+        <h2>Event Binding</h2>
+        <button type="button" (click)="AskQue()">Ask</button>
+        <p>Que : {{msg}}</p>
+    </div>
+    <div class="db">
+        <h2>Two way data Binding</h2>
+        <input type="text" [(ngModel)]="test"> <br>
+        {{test}}
+    </div>
+</div>
