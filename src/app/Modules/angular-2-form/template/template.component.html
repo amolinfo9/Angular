@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 border p-3 border-dark">
+            <h2 class="text-center bg bg-primary text-white">Student Registration Form</h2>
+            <form #Stud="ngForm">
+                <!-- stud id auto -->
+                <div class="form-group">
+                    <input type="hidden" name="id" #id="ngModel"ngModel class="form-control" 
+                    [(ngModel)]="temp.id">
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="form-label">Enter Student Name: </label>
+                    <input type="text" name="sname" class="form-control" #sname="ngModel"ngModel
+                    [(ngModel)]="temp.sname">
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="form-label">Enter Password: </label>
+                    <input type="password" name="pass" class="form-control" #pass="ngModel"ngModel
+                    [(ngModel)]="temp.pass">
+                </div>
+                <div class="form-group">
+                    <label for="" class="form-label">Enter Address: </label>
+                    <textarea name="sadd" cols="30" rows="5" class="form-control"
+                    #sadd="ngModel"ngModel [(ngModel)]="temp.sadd"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="" class="form-label">Select Gendar: </label> &nbsp;
+                    <label for="" class="form-label me-1">Male</label>
+                    <input type="radio" name="sgander" value="Male" #sgander="ngModel"ngModel
+                    [(ngModel)]="temp.sgander"> &nbsp;
+                    <label for="" class="form-label me-1">Female</label>
+                    <input type="radio" name="sgander" value="FeMale" #sgander="ngModel"ngModel
+                    [(ngModel)]="temp.sgander">
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="form-label"> -- Select Class --  </label>
+                    <select name="sclass" #sclass="ngModel"ngModel [(ngModel)]="temp.sclass"> 
+                        <option> Comp Eng.</option>
+                        <option> Mech Eng.</option>
+                        <option> Civil Eng.</option>
+                        <option> Ele Eng.</option>
+                    </select>    
+                </div>
+                <div class="form-group mt-4 text-center">
+                    <button type="submit" class="btn btn-success" (click)="onSave(Stud)" *ngIf="!showBtn">SAVE</button>
+                    <button type="button" class="btn btn-primary" (click)="onUpdate(Stud)" *ngIf="showBtn">UPDATE</button>
+                </div>
+            </form>
+        </div>
+        <!--  table -->
+        <div class="col-6 border p-3 border-dark" *ngIf="RegData.length>0">
+            <h2 class="text-center bg bg-primary text-white">Student Data</h2>
+            <table class="table table-bordered">
+                <tr>
+                    <th *ngFor="let thn of theadname">{{thn | uppercase}}</th>
+                    <th>ACTION</th>
+                </tr>
+                <tr *ngFor="let dt of RegData">
+                    <td>{{dt.id}}</td>
+                    <td>{{dt.sname}}</td>
+                    <td>{{dt.pass}}</td>
+                    <td>{{dt.sadd}}</td>
+                    <td>{{dt.sgander}}</td>
+                    <td>{{dt.sclass}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" (click)="onDelete(dt.id)">Delete</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-warning" (click)="onEdit(dt)">Edit</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

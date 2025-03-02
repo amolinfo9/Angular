@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class CustDirectiveComponent {
 
-  public name:string="Alex "
+  public name:string="Alex"
 }
