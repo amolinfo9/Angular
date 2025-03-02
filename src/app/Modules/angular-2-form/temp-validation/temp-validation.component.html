@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 border border-dark p-3">
+            <h2 class="text-center text-white bg bg-primary">Student Registarction Form</h2>
+            <form #Stud="ngForm" (ngSubmit)="Stud.valid && onSave(Stud)">
+                <div class="form-group">
+                    <input type="hidden" name="id" #id="ngModel" ngModel class="form-control" [(ngModel)]="temp.id">
+                </div>
+                <div class="form-group">
+                    <label for="" class="form-labe;">Enter UserName :</label>
+                    <input type="text" name="sname" #sname="ngModel" ngModel class="form-control"
+                        [(ngModel)]="temp.sname" required [ngClass]="{'is-invalid':Stud.submitted && sname.invalid}">
+                        <div *ngIf="Stud.submitted && sname.errors?.['required']" class="invalid-feedback">
+                            <i>This is required field...</i>
+                        </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="form-labe;">Enter Password :</label>
+                    <input type="pass" name="spass" #spass="ngModel" ngModel class="form-control"
+                        [(ngModel)]="temp.spass" required [ngClass]="{'is-invalid':Stud.submitted && spass.invalid}" >
+                        <div *ngIf="Stud.submitted && spass.errors?.['required']" class="invalid-feedback">
+                            <i>This is required field....</i>
+                        </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="form-labe;">Enter Your Msg :</label>
+                    <input type="text" name="smsg" #smsg="ngModel" ngModel class="form-control"
+                        [(ngModel)]="temp.smsg" required [ngClass]="{'is-invalid':Stud.submitted && smsg.invalid}">
+                        <div *ngIf="Stud.submitted && smsg.errors?.['required']" class="invalid-feedback">
+                            <i>This is required field....</i>
+                        </div>
+                </div>
+
+                <div class="form-group mt-4 text-center">
+                    <button type="submit" class="btn btn-success" *ngIf="!showbtn">SUBMIT</button>
+                    <button type="button" class="btn btn-info" (click)="onUpdate(Stud)"  *ngIf="showbtn" >UPDATE</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-6 border border-dark p-3" *ngIf="RegData.length >0">
+            <h2 class="text-center text-white bg bg-primary">Student Registarction Data</h2>
+            <table class="table table-bordered">
+                <tr>
+                    <th *ngFor="let thed of thead">{{thed | uppercase}}</th>
+                    <th>ACTION</th>
+                </tr>
+                <tr *ngFor="let dt of RegData">
+                    <td>{{dt.id}}</td>
+                    <td>{{dt.sname}}</td>
+                    <td>{{dt.spass}}</td>
+                    <td>{{dt.smsg}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" (click)="onDelete(dt.id)">Delete</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-warning" (click)="onEdit(dt)">Edit</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

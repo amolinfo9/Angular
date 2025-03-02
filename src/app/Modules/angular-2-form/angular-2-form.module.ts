@@ -4,6 +4,7 @@ import { TemplateComponent } from './template/template.component';
 import { ReactiveComponent } from './reactive/reactive.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TempValidationComponent } from './temp-validation/temp-validation.component';
 
 const route:Routes =[
   {
@@ -15,6 +16,10 @@ const route:Routes =[
     component:ReactiveComponent
   },
   {
+    path:"temp_valid",
+    component:TempValidationComponent
+  },
+  {
     path:"**",
     redirectTo:"",
     component:TemplateComponent
@@ -24,7 +29,8 @@ const route:Routes =[
 @NgModule({
   declarations: [
     TemplateComponent,
-    ReactiveComponent
+    ReactiveComponent,
+    TempValidationComponent
   ],
   imports: [
     CommonModule,
